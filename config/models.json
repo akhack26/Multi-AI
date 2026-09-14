@@ -1,0 +1,44 @@
+{
+  "_comment": "Model registry for ISHA Multi AI. 'file' is the exact filename ISHA looks for inside the models/ folder (relative path, no drive letters). Sizes are approximate Q4_K_M GGUF quantizations chosen to comfortably fit several models on a 64GB drive alongside the software itself. You may swap any entry for another GGUF model of the same role as long as you update 'file' to match the filename you place in models/.",
+
+  "roles": {
+    "chat": {
+      "description": "General conversation, default fallback agent",
+      "file": "llama-3.2-3b-instruct-q4_k_m.gguf",
+      "display_name": "Llama 3.2 3B Instruct (Q4_K_M)",
+      "approx_size_gb": 2.0,
+      "context_length": 8192,
+      "download_hint": "Search Hugging Face for 'Llama-3.2-3B-Instruct-GGUF' (e.g. bartowski or QuantFactory repacks) and download the Q4_K_M .gguf file.",
+      "min_ram_gb": 6
+    },
+    "study": {
+      "description": "Explaining concepts, summarizing notes, quizzing, study help",
+      "file": "phi-3.5-mini-instruct-q4_k_m.gguf",
+      "display_name": "Phi-3.5 Mini Instruct (Q4_K_M)",
+      "approx_size_gb": 2.4,
+      "context_length": 4096,
+      "download_hint": "Search Hugging Face for 'Phi-3.5-mini-instruct-GGUF' and download the Q4_K_M .gguf file.",
+      "min_ram_gb": 6
+    },
+    "coding": {
+      "description": "Writing/explaining/debugging code",
+      "file": "qwen2.5-coder-3b-instruct-q4_k_m.gguf",
+      "display_name": "Qwen2.5-Coder 3B Instruct (Q4_K_M)",
+      "approx_size_gb": 2.1,
+      "context_length": 8192,
+      "download_hint": "Search Hugging Face for 'Qwen2.5-Coder-3B-Instruct-GGUF' and download the Q4_K_M .gguf file.",
+      "min_ram_gb": 6
+    },
+    "reasoning": {
+      "description": "Multi-step problem solving, math, planning, logic",
+      "file": "qwen2.5-7b-instruct-q4_k_m.gguf",
+      "display_name": "Qwen2.5 7B Instruct (Q4_K_M)",
+      "approx_size_gb": 4.7,
+      "context_length": 8192,
+      "download_hint": "Search Hugging Face for 'Qwen2.5-7B-Instruct-GGUF' and download the Q4_K_M .gguf file. Larger/slower but noticeably better at multi-step reasoning; a 64GB drive has plenty of room for this alongside the 3B models above.",
+      "min_ram_gb": 10
+    }
+  },
+
+  "_capacity_note": "All four recommended models above total well under 15GB, leaving ~45GB+ free on a 64GB drive for the OS-independent app, logs, memory data, and extra models you add later. You do NOT need all four to run ISHA - it will simply disable any agent whose model file is missing until you add it."
+}
