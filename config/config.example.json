@@ -1,0 +1,62 @@
+{
+  "_comment": "Copy this file to config.json and edit as needed. config.json is what ISHA actually loads (it is gitignored so your personal settings/API keys never get bundled back into the shared project). All paths in this file are relative to the project root - do not put drive letters or absolute paths here.",
+
+  "assistant_name": "ISHA",
+
+  "backend": {
+    "preferred": "llama_cpp",
+    "fallback_order": ["llama_cpp", "ollama"],
+    "llama_cpp": {
+      "n_ctx": 4096,
+      "n_threads": null,
+      "n_gpu_layers": 0,
+      "comment": "n_threads: null = auto-detect from host CPU. n_gpu_layers: 0 = CPU only (safest/most portable across host PCs); raise this on a PC with a capable GPU for speed."
+    },
+    "ollama": {
+      "enabled": false,
+      "host": "http://localhost:11434",
+      "comment": "Only used if 'preferred' or fallback resolves to ollama and an Ollama server is already running on the host PC. Not required for offline llama.cpp operation."
+    }
+  },
+
+  "models_dir": "models",
+
+  "agents": {
+    "default_agent": "chat",
+    "enabled": ["chat", "study", "coding", "reasoning"]
+  },
+
+  "memory": {
+    "enabled": true,
+    "short_term_turns": 12,
+    "persist_long_term": true,
+    "max_long_term_entries": 2000
+  },
+
+  "voice": {
+    "tts_enabled": false,
+    "tts_rate": 175,
+    "tts_voice_index": 0,
+    "stt_enabled": false,
+    "comment": "Both default to off so first-run works with zero extra native audio dependencies. Enable in config.json once pyttsx3 / speech_recognition are installed on the host."
+  },
+
+  "tools": {
+    "require_confirmation_for_dangerous": true,
+    "allow_absolute_paths": true,
+    "warn_outside_project_paths": true,
+    "app_launch_whitelist": []
+  },
+
+  "api": {
+    "enabled": false,
+    "comment": "Optional. If you want ISHA to be able to fall back to a cloud API instead of / in addition to local models, fill this in and set enabled to true. Never commit real keys - config.json is local-only.",
+    "provider": "anthropic",
+    "api_key": "",
+    "model": "claude-sonnet-4-6"
+  },
+
+  "logging": {
+    "level": "INFO"
+  }
+}
