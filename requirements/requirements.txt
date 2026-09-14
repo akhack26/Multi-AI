@@ -1,0 +1,38 @@
+# ISHA Multi AI - Python dependencies
+#
+# Core (required for local GGUF inference):
+llama-cpp-python>=0.2.90
+
+# Used for the optional Ollama backend and STT's optional web fallback.
+requests>=2.31.0
+
+# Optional - offline text-to-speech. Safe to leave installed even if unused
+# (voice.tts_enabled is off by default in config.example.json).
+pyttsx3>=2.90
+
+# Optional - speech-to-text. Requires a working microphone + platform audio
+# libraries (e.g. PyAudio on Windows/macOS, portaudio19-dev on Linux) to
+# actually capture audio; ISHA runs fine without it (voice.stt_enabled=false
+# by default). Comment this line out if you don't plan to use STT and want
+# a lighter install.
+SpeechRecognition>=3.10.0
+
+# Optional - enables live CPU/RAM stats in the system_info tool. ISHA falls
+# back to basic stats without it.
+psutil>=5.9.0
+
+# ---------------------------------------------------------------------------
+# Notes:
+#
+# 1. llama-cpp-python installs a prebuilt wheel on most platforms, but on
+#    some systems pip will try to compile it from source (needs a C++
+#    compiler). See README.md -> Troubleshooting for platform-specific
+#    install commands (including CPU-only and CUDA/Metal-accelerated wheels).
+#
+# 2. If you only plan to use the Ollama backend (a separately installed,
+#    separately running local server) you can skip llama-cpp-python and set
+#    backend.preferred = "ollama" in config.json instead.
+#
+# 3. PyAudio (needed by SpeechRecognition to use a live microphone) is NOT
+#    listed here because it commonly needs a platform-specific install step.
+#    See README.md if you want to enable STT.
